@@ -1,5 +1,6 @@
 package ao.co.isptec.aplm.psfotosservices.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +15,8 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
+    @Column(nullable= false)
     private String name;
     
     @OneToMany(mappedBy="albums")

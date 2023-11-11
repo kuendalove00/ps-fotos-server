@@ -37,7 +37,7 @@ public class AlbumController {
     @PostMapping("")
     public String createAlbum(@RequestBody Album album){
         service.createAlbum(album);
-        return "New student is added";
+        return "Um novo album foi criado!";
     }
     
     @PutMapping("/{id}")
@@ -50,6 +50,6 @@ public class AlbumController {
     public String deleteAlbum(@PathVariable Integer id)
     {
         service.destroyAlbum(id);
-        return "O usuário com o id "+id+" foi excluído";
+        return "O album "+id+" foi excluído";
     }
 }

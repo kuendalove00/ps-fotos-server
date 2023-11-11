@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,15 +21,17 @@ public class Photo {
     
     @Column(nullable=false, unique=true)
     private String url;
-    private int Slice_id;
+    
+    @ManyToOne
+    private Slice slices;
 
     public Photo() {
     }
 
-    public Photo(int id, String url, int Slice_id) {
+    public Photo(int id, String url, Slice slices) {
         this.id = id;
         this.url = url;
-        this.Slice_id = Slice_id;
+        this.slices = slices;
     }
 
     public int getId() {
@@ -47,12 +50,12 @@ public class Photo {
         this.url = url;
     }
 
-    public int getSlice_id() {
-        return Slice_id;
+    public Slice getSlice_id() {
+        return slices;
     }
 
-    public void setSlice_id(int Slice_id) {
-        this.Slice_id = Slice_id;
+    public void setSlice_id(Slice slices) {
+        this.slices = slices;
     }
     
     

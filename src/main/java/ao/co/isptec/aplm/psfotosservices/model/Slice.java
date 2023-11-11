@@ -6,8 +6,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name="slices")
@@ -18,20 +21,24 @@ public class Slice {
     
     @Column(nullable=false, unique=true)
     private String url;
-    private int user_id;
-    private int album_id;
+    
+    @ManyToOne
+    private User users;
     
     @ManyToOne
     private Album albums;
+    
+    @OneToMany(mappedBy="slices")
+    private List<Photo> photos;
 
     public Slice() {
     }
 
-    public Slice(int id, String url, int user_id, int album_id) {
+    public Slice(int id, String url, User user, Album album) {
         this.id = id;
         this.url = url;
-        this.user_id = user_id;
-        this.album_id = album_id;
+        this.users = user;
+        this.albums = album;
     }
 
     public int getId() {
@@ -50,20 +57,20 @@ public class Slice {
         this.url = url;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public User getUser() {
+        return users;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUser(User user) {
+        this.users = user;
     }
 
-    public int getAlbum_id() {
-        return album_id;
+    public Album getAlbum() {
+        return albums;
     }
 
-    public void setAlbum_id(int album_id) {
-        this.album_id = album_id;
+    public void setAlbum(Album album) {
+        this.albums = album;
     }
     
     

@@ -37,7 +37,7 @@ public class PhotoController {
     @PostMapping("")
     public String createPhoto(@RequestBody Photo photo){
         service.addPhoto(photo);
-        return "New student is added";
+        return "uma nova foto foi adicionada ao álbum";
     }
     
     @PutMapping("/{id}")
@@ -50,6 +50,6 @@ public class PhotoController {
     public String deletePhoto(@PathVariable Integer id)
     {
         service.destroyPhoto(id);
-        return "O usuário com o id "+id+" foi excluído";
+        return "A foto "+id+" foi excluída";
     }
 }

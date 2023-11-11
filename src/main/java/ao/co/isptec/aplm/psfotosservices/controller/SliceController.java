@@ -37,7 +37,7 @@ public class SliceController {
     @PostMapping("")
     public String createSlice(@RequestBody Slice slice){
         service.addSlice(slice);
-        return "New student is added";
+        return "Uma nova fatia foi adicionada";
     }
     
     @PutMapping("/{id}")
@@ -50,6 +50,6 @@ public class SliceController {
     public String deleteSlice(@PathVariable Integer id)
     {
         service.destroySlice(id);
-        return "O usuário com o id "+id+" foi excluído";
+        return "A fatia "+id+" foi excluída";
     }
 }

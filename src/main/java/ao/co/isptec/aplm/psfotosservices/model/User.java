@@ -5,7 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -17,7 +19,12 @@ public class User {
     @Column(nullable= false, unique= true)
     private String username;
     
+    @Column(nullable= false)
     private String password;
+    
+    @OneToMany(mappedBy="users")
+    private List<Slice> slices;
+    
 
     public User() {
     }

@@ -34,8 +34,8 @@ public class SliceServiceImpl implements SliceService{
     public Slice updateSlice(Slice newSlice, Integer id)
     {
         return sliceRepository.findById(id).map(slice -> {
-            slice.setAlbum_id(newSlice.getAlbum_id());
-            slice.setUser_id(newSlice.getUser_id());
+            slice.setAlbum(newSlice.getAlbum());
+            slice.setUser(newSlice.getUser());
             slice.setUrl(newSlice.getUrl());
             return sliceRepository.save(slice);
         }).orElseThrow(()->new NotFoundException(id));
